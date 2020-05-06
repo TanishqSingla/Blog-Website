@@ -35,7 +35,7 @@ app.get("/compose", (req, res) => {
 });
 
 app.post("/compose", (req, res) => {
-  console.log(req.body.publishedContent);
+  console.log(req.body.postTitle);
 });
 
 app.listen(3000, function () {
