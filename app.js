@@ -69,7 +69,10 @@ app.get("/posts/:postName", (req, res) => {
         body: post.body,
       });
     } else {
-      console.log("No match found");
+      res.render("post", {
+        title: "No Match Found",
+        body: "No such post exist",
+      });
     }
   });
 });
