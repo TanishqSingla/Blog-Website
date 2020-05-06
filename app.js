@@ -14,7 +14,7 @@ const contactContent =
 const app = express();
 
 //Array for saving posts
-const posts = [];
+let posts = [];
 
 app.set("view engine", "ejs");
 

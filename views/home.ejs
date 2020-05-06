@@ -3,7 +3,7 @@
 <h1>Home</h1>
 <p><%= homeStartingContent %></p>
 
-<% for( let i = 0; i < posts.length; i++ ) { %>
-<h2><%= posts[i].title %></h2>
-<p><%= posts[i].body %></p>
-<% } %> <%- include('partials/footer') %>
+<% posts.forEach(post => { %>
+<h1>post.title</h1>
+<p>post.body</p>
+<% }) %> <%- include('partials/footer') %>
