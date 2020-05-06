@@ -13,13 +13,16 @@ const contactContent =
 
 const app = express();
 
+//Array for saving posts
+const posts = [];
+
 app.set("view engine", "ejs");
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
 app.get("/", (req, res) => {
-  res.render("home", { homeStartingContent });
+  res.render("home", { homeStartingContent, posts });
 });
 
 app.get("/about", (req, res) => {
@@ -35,7 +38,13 @@ app.get("/compose", (req, res) => {
 });
 
 app.post("/compose", (req, res) => {
-  console.log(req.body.postTitle);
+  const post = {
+    title: req.body.postTitle,
+    body: req.body.postBody,
+  };
+
+  posts.push(post);
+  res.redirect("/");
 });
 
 app.listen(3000, function () {
