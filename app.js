@@ -3,6 +3,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const ejs = require("ejs");
+const _ = require("lodash");
 
 //Starter content
 const homeStartingContent =
@@ -57,7 +58,17 @@ app.post("/compose", (req, res) => {
 
 //Making separate section for all the posts
 app.get("/posts/:postName", (req, res) => {
-  console.log(req.params.postName);
+  let requestedTitle = _.lowerCase(req.params.postName);
+
+  posts.forEach((post) => {
+    const storedTitle = _.lowerCase(post.title);
+
+    if (requestedTitle === storedTitle) {
+      console.log("match found");
+    } else {
+      console.log("No match found");
+    }
+  });
 });
 
 app.listen(3000, function () {
